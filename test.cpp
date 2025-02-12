@@ -1,7 +1,7 @@
 #include "queue.h"
 #include <string>
 #include <gtest/gtest.h>
-//#include <gmock/gmock.h>
+#include <gmock/gmock.h>
 
 class Memory : public IMemory
 {
@@ -22,5 +22,5 @@ TYPED_TEST_SUITE(QueueFixture, Types);
 
 TYPED_TEST(QueueFixture, empty)
 {
-    
+
 }

@@ -18,7 +18,7 @@ class queue
     {
         T data;
         node_t *next;
-    }
+    };
     
 IMemory &memory;
 size_t count{0};
