@@ -1,7 +1,7 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include <stddef.h>
+#include <cstddef>
 
 struct IMemory
 {
@@ -11,9 +11,8 @@ struct IMemory
 };
 
 template <typename T>
-class queue
+class Queue
 {
-
     struct node_t
     {
         T data;
@@ -26,13 +25,13 @@ node_t *head{nullptr};
 node_t *tail{nullptr};
 
 public:
-    queue(const queue &) = delete;
-    queue &operator=(const queue &) = delete;
+    Queue(const Queue &) = delete;
+    Queue &operator=(const Queue &) = delete;
     
-    queue(IMemory &_memory) : memory{_memory} {};
+    Queue(IMemory &_memory) : memory{_memory} {};
 
-    queue(queue &&that) noexcept {};
-    queue &operator=(queue &&that) noexcept {};
+    Queue(Queue &&that) noexcept {};
+    Queue &operator=(Queue &&that) noexcept {};
 
     bool enqueue(const T &item) {};
     bool dequeue(T &item) {};
@@ -40,7 +39,8 @@ public:
     size_t size(void) {return count;}
 
     void clear(void) {};
-    ~queue() {};
+
+    ~Queue() {};
 };
 
 #endif //QUEUE_H
