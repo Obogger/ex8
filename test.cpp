@@ -1,11 +1,26 @@
-#include <iostream>
+#include "queue.h"
+#include <string>
+#include <gtest/gtest.h>
+//#include <gmock/gmock.h>
 
-
-int main() 
+class Memory : public IMemory
 {
-    std::cout << "Hello This is a crazy cmake file";
+
+};
 
 
+template <typename T>
 
-    return 0;
+class QueueFixture : public ::testing::Test
+{
+
+};
+
+using Types = ::testing::Types<int, float, std::string>;
+TYPED_TEST_SUITE(QueueFixture, Types);
+
+
+TYPED_TEST(QueueFixture, empty)
+{
+    
 }
