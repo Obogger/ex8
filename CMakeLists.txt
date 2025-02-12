@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.22)  # Minimum required CMake version
-project(MyProject)  # Project name
+project(excerise-8 VERSION 1.0
+                    DESCRIPTION "Excerise 8")
 
 enable_testing()
 
