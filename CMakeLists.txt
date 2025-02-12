@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)  # Minimum required CMake version
+cmake_minimum_required(VERSION 3.22)  # Minimum required CMake version
 project(MyProject)  # Project name
 
 enable_testing()
@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_executable(test_queue test.cpp)  # Create an executable from test.cpp
 
+target_link_libraries(test_queue PRIVATE gtest gtest_main pthread)
 
 add_test(NAME queue_test COMMAND test_queue)
 
