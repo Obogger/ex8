@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)  # Minimum required CMake version
+cmake_minimum_required(VERSION 3.22)  # Minimum required CMake version
 project(MyProject)  # Project name
 
 enable_testing()
