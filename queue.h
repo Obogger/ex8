@@ -31,16 +31,16 @@ public:
     
     queue(IMemory &_memory) : memory{_memory} {};
 
-    queue(queue &&that) noexcept;
-    queue &operator=(queue &&that) noexcept;
+    queue(queue &&that) noexcept {};
+    queue &operator=(queue &&that) noexcept {};
 
-    bool enqueue(const T &item);
-    bool dequeue(T &item);
+    bool enqueue(const T &item) {};
+    bool dequeue(T &item) {};
 
     size_t size(void) {return count;}
 
-    void clear(void);
-    ~queue();
+    void clear(void) {};
+    ~queue() {};
 };
 
 #endif //QUEUE_H
