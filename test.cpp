@@ -56,7 +56,7 @@ class QueueFixture : public ::testing::Test
 protected:
     const std::vector<T> values{std::get<std::vector<T>>(allValues)};
 
-    NiceMock<Memory> memory;
+    NiceMock<Memory> mock;
 
     Queue<T> queue{mock};
 
