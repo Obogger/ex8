@@ -5,8 +5,13 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
+using ::testing::_;
+using ::testing::Invoke;
+using ::testing::NiceMock;
+using ::testing::Return;
 class Memory : public IMemory
 {
+    size_t pos{0};
     std::vector<void *> vec;
     uint8_t block[8192];
 
@@ -15,12 +20,15 @@ public:
     MOCK_METHOD(void, free, (void *ptr), (override));
     void *allocate(size_t size)
     {
-        static size_t pos{0};
 
-        void *ptr{&block[pos]};
+        void *ptr{nullptr};
 
-        vec.push_back(ptr);
-        pos += size;
+        if ((pos + size) < sizeof(block))
+        {
+            ptr = &block[pos];
+            vec.push_back(ptr);
+            pos += size;
+        }
 
         return ptr;
     }
@@ -48,8 +56,9 @@ class QueueFixture : public ::testing::Test
 protected:
     const std::vector<T> values{std::get<std::vector<T>>(allValues)};
 
-    Memory memory;
-    Queue<T> queue{memory};
+    NiceMock<Memory> memory;
+
+    Queue<T> queue{mock};
 
     void SetUp(void) override
     {
