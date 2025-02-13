@@ -26,7 +26,7 @@ class Queue
     node_t *tail{nullptr};
 
 public:
-    Queue(const Queue &) = delete;
+        Queue(const Queue &) = delete;
     Queue &operator=(const Queue &) = delete;
 
     Queue(IMemory &_memory) : memory{_memory} {}
@@ -79,6 +79,10 @@ public:
         memory.free(temp);
         --count;
         return true;
+    }
+    bool isEmpty()
+    {
+        return count == 0;
     }
     size_t size(void) const { return count; }
     void clear(void)

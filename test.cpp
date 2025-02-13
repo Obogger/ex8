@@ -62,6 +62,21 @@ protected:
 
     void SetUp(void) override
     {
+
+        EXPECT_EQ(0, queue.size());
+
+        ON_CALL(mock, malloc).WillByDefault([this](size_t size)
+                                            { return mock.allocate(size); });
+
+        ON_CALL(mock, free).WillByDefault([this](void *ptr)
+                                          { return mock.release(ptr); });
+        for (size_t i = 1; i <= values.size(); i++)
+        {
+
+            EXPECT_TRUE(queue.enqueue(values[i - 1]));
+
+            EXPECT_EQ(i, queue.size());
+        }
     }
 
     void TearDown(void) override {}
@@ -70,6 +85,7 @@ protected:
 using Types = ::testing::Types<int, float, std::string>;
 TYPED_TEST_SUITE(QueueFixture, Types);
 
-TYPED_TEST(QueueFixture, empty)
+TYPED_TEST(QueueFixture, queueisempty)
 {
+    EXPECT_TRUE(this->queue.isEmpty());
 }
